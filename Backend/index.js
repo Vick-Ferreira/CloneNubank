@@ -10,6 +10,7 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
+
 // Importar e usar as rotas
 const carroselCardsRouter = require('./routes/carroselCardsRoutes');
 app.use(carroselCardsRouter);
