@@ -331,7 +331,7 @@ fetch('https://clonenubank-7x5l36eztq-ue.a.run.app/duploCards')
         unicoCar.className = 'carUnico';
 
         const imgDu = document.createElement('img');
-        imgDu.src = `https://clonenubank-7x5l36eztq-ue.a.run.app/${item.filename}`; // URL para recuperar a imagem
+        imgDu.src = `https://clonenubank-7x5l36eztq-ue.a.run.app/bloco/${item.filename}`; // URL para recuperar a imagem
         imgDu.alt = item.filename;
 
         const subtituloUnico = document.createElement('h3');
