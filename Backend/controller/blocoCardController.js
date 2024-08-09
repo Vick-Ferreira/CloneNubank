@@ -6,13 +6,11 @@ const dbNome = process.env.DB_NAME;
 const url = process.env.MONGODB_URI;
 
 exports.createbloco = async (req, res) => {
-    //verificação
-    if(!req.file) {
+    if (!req.file) {
         console.error('Nenhum arquivo enviado');
-        return res.status(400).json({ erro: 'nenhum arquivo encontrado'});
+        return res.status(400).json({ erro: 'nenhum arquivo encontrado' });
     }
 
-    //metadados
     const { subtitulo, paragrafo } = req.body;
     const cliente = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -35,11 +33,6 @@ exports.createbloco = async (req, res) => {
 
         readableStream.pipe(uploadStream);
 
-          // Adiciona cabeçalhos apropriados para servir uma imagem
-          res.setHeader('Content-Type', 'image/png'); // Ajuste o tipo de conteúdo conforme necessário
-
-          
-
         uploadStream.on('error', (error) => {
             console.error('Erro ao enviar arquivo:', error);
             res.status(500).json({ erro: 'erro ao enviar o arquivo' });
@@ -57,6 +50,7 @@ exports.createbloco = async (req, res) => {
         cliente.close();
     }
 };
+
 
 exports.listarbloco = async (req, res) => {
     const cliente = new MongoClient(url);
@@ -91,8 +85,17 @@ exports.getbloco = async (req, res) => {
         console.log('Conexão estabelecida com sucesso ao MongoDB');
 
         const database = cliente.db(dbNome);
-        const bucket = new GridFSBucket(database, { bucketName: 'bloco'});
+        const bucket = new GridFSBucket(database, { bucketName: 'bloco' });
         
+        // Encontrar o arquivo para obter o tipo de conteúdo
+        const file = await bucket.find({ filename }).toArray();
+        if (file.length === 0) {
+            return res.status(404).json({ erro: 'Arquivo não encontrado' });
+        }
+
+        // Adiciona o cabeçalho Content-Type
+        res.setHeader('Content-Type', file[0].metadata.contentType || 'image/png'); // Ajuste o tipo conforme necessário
+
         const downloadStream = bucket.openDownloadStreamByName(filename);
 
         downloadStream.on('data', (chunk) => {
@@ -113,3 +116,5 @@ exports.getbloco = async (req, res) => {
         res.status(500).json({ erro: 'Erro ao conectar ao MongoDB' });
     }
 };
+
+//cabeçalho Content-Type para o tipo de imagem que está sendo retornado. Isso é crucial para que o navegador entenda como exibir o conteúdo. 
