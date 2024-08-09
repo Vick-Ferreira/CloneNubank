@@ -14,6 +14,21 @@ app.use(cors());
 const carroselCardsRouter = require('./routes/carroselCardsRoutes');
 app.use(carroselCardsRouter);
 
+const duploCardsRouter = require('./routes/duploCardRoutes');
+app.use(duploCardsRouter);
+
+const backgroudCardRouter = require('./routes/backgroundCardRoutes');
+app.use(backgroudCardRouter);
+
+const blocoCardRouter = require('./routes/blocoCardRoutes');
+app.use(blocoCardRouter)
+
+const elementosCardsRouter = require('./routes/elementosCardsRoutes');
+app.use(elementosCardsRouter);
+
+const cardCardsRouter = require('./routes/cardCardsRoutes');
+app.use(cardCardsRouter);
+
 // Servir arquivos estáticos
 const frontendPath = path.join(__dirname, '../Frontend');
 app.use(express.static(frontendPath));
