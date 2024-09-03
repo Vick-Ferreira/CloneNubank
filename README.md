@@ -33,9 +33,9 @@ Utilizei o Postman para testar as funcionalidades da API RESTful desenvolvida. C
 - **Google Cloud**: Hospedagem e implantação.
 - **Docker**: Containerização da aplicação.
 
-## Como Rodar o Projeto
+## Como Rodar o Projeto localmente
 
-1. **Pagina principal** :
+1. **Pasta principal** :
    npm start
 
 
