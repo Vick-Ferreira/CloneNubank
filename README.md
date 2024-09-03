@@ -35,7 +35,7 @@ Utilizei o Postman para testar as funcionalidades da API RESTful desenvolvida. C
 
 ## Como Rodar o Projeto
 
-1. **Pagina principal**
+1. **Pagina principal** :
    npm start
 
 
