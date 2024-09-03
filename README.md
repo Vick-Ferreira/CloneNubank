@@ -9,7 +9,7 @@ Este projeto foi desenvolvido utilizando JavaScript, Node.js e MongoDB como banc
 O frontend é o foco principal do projeto e é responsável pela interface com o usuário. Utilizei frameworks como Bootstrap e Sass para estilização e garantir a responsividade do design. A interação com o backend é feita através de uma API RESTful. O frontend inclui funcionalidades como:
 
 - **Responsividade**: Design adaptável a diferentes tamanhos de tela.
-- **Redirecionamento de Links**: Navegação eficiente entre diferentes seções do site.
+- **Cópia do Design Original**: Implementação fiel ao design proposto para garantir consistência visual.
 - **Renderização Dinâmica de Conteúdo**: Dados como cards e carrosséis são renderizados dinamicamente com JavaScript.
 
 ### Backend
